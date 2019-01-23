@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { timingSafeEqual } from 'crypto';
-// import { environment } from 'src/environments/environment';
 
 @Injectable()
 
@@ -14,11 +12,9 @@ export class CategoryService {
     return this.http.get(this.endpoint + `/categories?filter[where][name]=${input.search}`);
   }
 
-  getCategory() {
-    return this.http.get(this.endpoint + '/categories')
-      .subscribe(data => {
-        console.log(data);
-      });
+  getCategory(params) {
+    return this.http.get(this.endpoint + '/categories', {params});
+      }
   }
 
 
@@ -52,4 +48,4 @@ export class CategoryService {
   //   return this.http.delete(this.endpoint + `/categories/${id}`);
   // }
 
-}
+
