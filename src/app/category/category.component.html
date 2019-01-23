@@ -1,0 +1,35 @@
+<app-sidebar></app-sidebar>
+<app-header></app-header>
+
+<div class="container mt-3 col-3 col-sm-3 col-md-6">
+  <h1>Categories</h1>
+  <button class="btn btn-success float-right" id="add-btn">Add new</button>
+
+  <form id="search" class="form-inline float-left">
+    <input formControlName="search" class="form-control mr-sm-2" type="search" placeholder="Search by Category"
+      aria-label="Search">
+    <button class="btn btn-outline-primary mr-1" type="submit" (click)="search()" [disabled]=!searchForm>Search</button>
+    <button class="btn btn-outline-secondary" type="submit" (click)="clear()">Clear</button>
+  </form>
+
+  <table class="table table-hover table-bordered mt-5">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Parent Category</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th >1</th>
+        <td *ngFor="let category of categories">{{category.id}}</td>
+        <td>{{categories}}</td>
+        <td>
+          <a><i class="material-icons"> edit </i></a>
+          <a><i class="material-icons"> delete </i></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

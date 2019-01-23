@@ -1,0 +1,19 @@
+.header {
+    background-color: #4286f4;
+    
+    &-name {
+      margin: 5px;
+      text-overflow: ellipsis;
+      display: inline-block;
+      color: white;
+      text-decoration: none;
+    }
+  
+    &-user {
+      margin: 10px;
+      font-size: 24px;
+      color: black;
+      float: right;
+      cursor: pointer;
+    }  
+}
