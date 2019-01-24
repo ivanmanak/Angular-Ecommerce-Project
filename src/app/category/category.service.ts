@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 
 export class CategoryService {
   endpoint = `http://localhost:3000/`;
+  id: number;
+  editIt: number;
 
   constructor(private http: HttpClient) { }
 
@@ -13,47 +17,27 @@ export class CategoryService {
   }
 
   getCategories() {
-    return this.http.get(this.endpoint + '/categories');
+    return this.http.get(this.endpoint + 'categories');
   }
 
   saveCategory(data) {
-    return this.http.post('http://localhost:3000/' + '/categories', data);
+    return this.http.post(this.endpoint + '/categories', data);
   }
 
   editCategory(data) {
-    return this.http.put('http://localhost:3000/' + '/categories', data);
+    return this.http.put(this.endpoint + '/categories', data);
+  }
+
+  deleteCategory(id) {
+    return this.http.delete(this.endpoint + id);
+  }
+
+  updateCategories(id, category) {
+    return this.http.put(this.endpoint + '/' + id, category);
   }
 
 }
 
 
-  // editCategory(data) {
-  //   return this.http.put(this.endpoint, data);
-  // }
-
-
-  // deleteCategory(id) {
-  //   return this.http.delete(this.endpoint + `/category/${id}`);
-  // }
-
-  // getSearch(input) {
-  //   return this.http.get(this.endpoint + `/categories?filter[where][name]=${input.search}`)
-  // }
-
-  // getCategory(id) {
-  //   return this.http.get(this.endpoint + `/categories/${id}`);
-  // }
-
-  // getNewCategory(data) {
-  //   return this.http.post(this.endpoint + '/categories', data);
-  // }
-
-  // updateCurrent(id, data) {
-  //   return this.http.put(this.endpoint + `/categories/${id}`, data);
-  // }
-
-  // deleteCategory(id) {
-  //   return this.http.delete(this.endpoint + `/categories/${id}`);
-  // }
 
 
