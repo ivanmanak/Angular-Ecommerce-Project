@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 
 export class CategoryService {
-  endpoint = `http://127.0.0.1:3000/explorer/`;
+  endpoint = `http://localhost:3000/`;
 
   constructor(private http: HttpClient) { }
 
@@ -12,11 +12,19 @@ export class CategoryService {
     return this.http.get(this.endpoint + `/categories?filter[where][name]=${input.search}`);
   }
 
-  getCategory(params) {
-    return this.http.get(this.endpoint + '/categories', {params});
-      }
+  getCategories() {
+    return this.http.get(this.endpoint + '/categories');
   }
 
+  saveCategory(data) {
+    return this.http.post('http://localhost:3000/' + '/categories', data);
+  }
+
+  editCategory(data) {
+    return this.http.put('http://localhost:3000/' + '/categories', data);
+  }
+
+}
 
 
   // editCategory(data) {

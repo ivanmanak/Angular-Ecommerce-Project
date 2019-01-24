@@ -1,4 +1,7 @@
+import { CategoryService } from './category.service';
 import { Component, OnInit } from '@angular/core';
+import { getAllDebugNodes } from '@angular/core/src/debug/debug_node';
+import { TouchSequence } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-category',
@@ -6,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
+  categories: any = [];
 
-  constructor() {}
+  constructor(
+    private categoryService: CategoryService
+  ) { }
 
   ngOnInit() {
+    this.allCategories();
+  }
+
+  allCategories() {
+    this.categoryService.getCategories().subscribe(res => {
+      this.categories = res;
+      console.log(this.categories);
+
+    });
   }
 }
+

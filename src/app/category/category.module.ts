@@ -1,3 +1,4 @@
+import { CategoryComponent } from './category.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CategoryAddComponent } from './category-add/category-add.component';
 import { NgModule } from '@angular/core';
@@ -7,6 +8,7 @@ import { CategoryService } from './category.service';
 
 const DECLARATIONS = [
   CategoryAddComponent,
+  CategoryComponent
 ];
 
 const SERVICES = [
