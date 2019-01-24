@@ -1,7 +1,7 @@
 import { CategoryService } from './../category.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-// import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-category-add',
@@ -9,18 +9,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./category-add.component.scss']
 })
 export class CategoryAddComponent implements OnInit {
-  category = {
-    'name': '',
-    'id': '',
-    'parentCategoryId': ''
-  };
+  category: any = [];
 
   name: string;
 
   constructor(
     private categoryService: CategoryService,
     private formBuilder: FormBuilder,
-    // private toastr: ToastrService,
+    public router: Router
   ) { }
 
   categoryForm: FormGroup;
@@ -33,12 +29,11 @@ export class CategoryAddComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.categoryService.saveCategory(this.categoryForm.value).subscribe(res => {
-    //   this.categoryService.categoryCreated(res);
-    //   this.categoryForm.reset();
-    // });
-
     this.category.name = this.name;
+    this.categoryService.saveCategory(this.category).subscribe(res => {
+    this.category = res;
+    this.router.navigate(['/categories']);
+      });
   }
 
   ngOnInit() {

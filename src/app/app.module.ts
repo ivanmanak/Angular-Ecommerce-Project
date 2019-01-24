@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { ProductsComponent } from './products/products.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,9 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     CategoryModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     CategoryService

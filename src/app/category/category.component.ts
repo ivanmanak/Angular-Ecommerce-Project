@@ -7,16 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
+  categories: any = [];
   name: string;
   id: number;
-  parent: number;
-  categories: any = [];
 
   constructor(
     private categoryService: CategoryService
   ) { }
 
-  allCategories() {
+  getCategories() {
     this.categoryService.getCategories().subscribe(res => {
       this.categories = res;
       console.log(this.categories);
@@ -24,7 +23,7 @@ export class CategoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.allCategories();
+    this.getCategories();
   }
 }
 

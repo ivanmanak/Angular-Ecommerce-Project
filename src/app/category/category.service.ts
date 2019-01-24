@@ -32,9 +32,9 @@ export class CategoryService {
     return this.http.delete(this.endpoint + id);
   }
 
-  updateCategories(id, category) {
-    return this.http.put(this.endpoint + '/' + id, category);
-  }
+  // updateCategories(id, category) {
+  //   return this.http.put(this.endpoint + '/' + id, category);
+  // }
 
 }
 
